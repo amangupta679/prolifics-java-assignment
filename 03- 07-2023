@@ -1,0 +1,119 @@
+import java.util.Scanner;
+
+public class TaxCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the monthly salary: ");
+        double monthlySalary = scanner.nextDouble();
+        double annualSalary = monthlySalary * 12;
+        double tax = 0.0;
+        if (annualSalary <= 250000) {
+            // No tax
+            tax = 0.0;
+        } else if (annualSalary <= 500000) {
+            // 10% tax
+            tax = 0.1 * (annualSalary - 250000);
+        } else if (annualSalary <= 1000000) {
+            // 20% tax
+            tax = 0.2 * (annualSalary - 500000) + 25000;
+        } else if (annualSalary <= 10000000) {
+            // 30% tax
+            tax = 0.3 * (annualSalary - 1000000) + 125000;
+        } else {
+            // 30% tax for 1 crore
+            tax = 0.3 * (annualSalary - 1000000) + 125000;
+        }
+        
+        System.out.println("Annual Salary: " + annualSalary);
+        System.out.println("Tax: " + tax);
+    }
+}
+........................................................................................................................
+public class LinearSearch {
+    public static int linearSearch(int[] arr, int target) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i; 
+            }
+        }
+        return -1; 
+}
+    public static void main(String[] args) {
+        int[] arr = {5, 8, 2, 10, 3, 1};
+        int target = 10;
+        
+        int index = linearSearch(arr, target);
+        if (index != -1) {
+            System.out.println("tgt found at index: " + index);
+        } else {
+            System.out.println("tgt not found");
+        }
+    }
+}
+
+............................................................................................................................
+
+// linear search on sorted array
+
+public class LinearSearch {
+    public static int linearSearchSorted(int[] arr, int target) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i; 
+            } else if (arr[i] > target) {
+                return -1; 
+            }
+        }
+        
+        return -1; 
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 5, 8, 10};
+        int target = 5;
+        
+        int index = linearSearchSorted(arr, target);
+        if (index != -1) {
+            System.out.println("Target found at index: " + index);
+        } else {
+            System.out.println("Target not found");
+        }
+    }
+}
+.........................................................................................................................
+
+// binary search 
+
+public class BinarySearch {
+    public static int binarySearch(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            
+            if (arr[mid] == target) {
+                return mid; 
+            } else if (arr[mid] < target) {
+                left = mid + 1; 
+            } else {
+                right = mid - 1; 
+            }
+        }
+        
+        return -1; 
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 5, 8, 10};
+        int target = 5;
+        
+        int index = binarySearch(arr, target);
+        if (index != -1) {
+            System.out.println("Target found at index: " + index);
+        } else {
+            System.out.println("Target not found");
+        }
+    }
+}
